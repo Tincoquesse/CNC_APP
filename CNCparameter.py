@@ -9,11 +9,11 @@ pygame.font.init()
 
 # test
 # background image load
-bg = pygame.image.load('bg_cnc.png')
-frez_button = pygame.image.load('frez.png')
-frez_white_button = pygame.image.load('frez_white.png')
-drill_white_button = pygame.image.load('drill_white.png')
-drill_button = pygame.image.load('drill.png')
+bg = pygame.image.load('images/bg_cnc.png')
+frez_button = pygame.image.load('images/frez.png')
+frez_white_button = pygame.image.load('images/frez_white.png')
+drill_white_button = pygame.image.load('images/drill_white.png')
+drill_button = pygame.image.load('images/drill.png')
 pygame.display.set_caption("CNC Parameter")
 
 # colors
