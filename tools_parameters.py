@@ -1,16 +1,18 @@
+import numpy
+
 def drill_feed(diameter, vc = 35):
     '''Parametr dla wierteł HSS, zwraca posuw mm/min'''
-    d = diameter
+    d = float(diameter)
     fz = 0.1
     # rotation for minute
     n = (1000.0 * vc) / (float(d) * 3.14)
     # feed mm/min
-    if diameter in range(0,5):
+    if diameter in numpy.arange(0, 5, 0.1):
         fz = 0.1
-    elif diameter in range(4,9):
-        fz = 0.18
+    elif diameter in numpy.arange(4, 9, 0.1):
+        fz = 0.15
     else:
-        fz = 0.22
+        fz = 0.20
     f = fz * n
     return int(f)
 
@@ -37,6 +39,18 @@ def cutter_feed(diameter, vc = 400):
     f = fz * n
     return int(f)
 
+def cutter_feed_hundred(diameter, vc = 400):
+    '''Parametr dla frezów, zwraca posuw mm/100 obrotów '''
+    d = diameter
+    fz = 0.02
+
+    # revolution for minute
+    n = (1000.0 * vc)/(float(d) * 3.14)
+    if n > 22000:
+        n = 22000
+    # feed milimeter for minute
+    f = fz * n/60
+    return float(f)
 
 def cutter_spin(diameter, vc = 400):
     '''Parametr dla frezów, zwraca obroty'''
@@ -48,3 +62,4 @@ def cutter_spin(diameter, vc = 400):
     if n > 22000:
         n = 22000
     return int(n)
+

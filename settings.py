@@ -1,14 +1,14 @@
 import pygame
 pygame.font.init()
+from tools_parameters import *
 
 class Settings():
-
     '''Parameters for main program'''
 
     def __init__(self):
         # colors
         self.white = (255, 255, 255)
-        self.black = (0, 0, 0)
+        self.black = (22,22,20)
         self.blue = (100, 240, 240)
         self.red = (250, 0, 0)
 
@@ -22,6 +22,13 @@ class Settings():
         self.font_cutter_menu = pygame.font.Font('freesansbold.ttf', 50)
         self.font_drill_menu = pygame.font.Font('freesansbold.ttf', 50)
 
+        #frames
+        self.frame_menu = pygame.Rect(165, 13, 470, 66)
+        self.frame_vhm = pygame.Rect(250, 20, 290, 55)
+        self.frame_drill = pygame.Rect(210, 20, 380, 55)
+        self.frame_txtinput = pygame.Rect(40, 120, 390, 36)
+        self.frame_results = pygame.Rect(150, 200, 500, 250)
+
         # text
         self.text_cnc = self.font_cnc.render('CNC Parameter', True, self.white)
         self.text_tools = self.font_tools.render('WYBIERZ RODZAJ NARZĘDZIA',
@@ -32,16 +39,20 @@ class Settings():
                                                             True,
                                                   self.white)
 
-        # images load
+        # load images
         self.bg = pygame.image.load('images/bg_cnc.png')
         self.frez_button = pygame.image.load('images/frez.png')
         self.frez_white_button = pygame.image.load('images/frez_white.png')
         self.drill_white_button = pygame.image.load('images/drill_white.png')
         self.drill_button = pygame.image.load('images/drill.png')
+        self.back = pygame.image.load('images/back.png')
+        self.back_white = pygame.image.load('images/back_white.png')
+
 
 
         self.screen = pygame.display.set_mode((self.screen_width,
                                                self.screen_hight))
+        self.fake_screen = self.screen.copy()
         self.clock = pygame.time.Clock()
         self.text_cncRect = self.text_cnc.get_rect()
         self.text_cncRect.center = (self.screen_width / 2, self.screen_hight
@@ -49,7 +60,7 @@ class Settings():
 
         self.text_toolsRect = self.text_tools.get_rect()
         self.text_toolsRect.center = (self.screen_width // 2,
-                                      self.screen_hight - 250)
+                                      self.screen_hight - 230)
 
         self.text_cutter_menuRect = self.text_cutter_menu.get_rect()
         self.text_cutter_menuRect.center = (self.screen_width / 2,
@@ -59,3 +70,4 @@ class Settings():
         self.text_drill_menuRect = self.text_drill_menu.get_rect()
         self.text_drill_menuRect.center = (self.screen_width / 2,
                                            self.screen_hight - 450)
+
