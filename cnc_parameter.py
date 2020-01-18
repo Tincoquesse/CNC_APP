@@ -25,13 +25,14 @@ def run_menu():
         # drawing
         se.screen.blit(se.bg, (0, 0))
         pygame.draw.rect(se.screen, se.black, (165, 13, 470, 66),2)
-        pygame.draw.rect(se.screen, se.black, (170, 248, 460, 40))
-        pygame.draw.rect(se.screen, se.white, (170, 248, 460, 40), 1)
+        pygame.draw.rect(se.screen, se.black, (170, 118, 460, 40))
+        pygame.draw.rect(se.screen, se.white, (170, 118, 460, 40), 1)
         pygame.draw.rect(se.screen, se.white, se.frame_menu, 3)
         se.screen.blit(se.text_tools, se.text_toolsRect)
         se.screen.blit(se.text_cnc, se.text_cncRect)
-        drill_push_button(450, 300, 300, 143, drill_parameter_loop)
-        cutter_push_button(50, 300, 300, 143, cutter_parameter_loop)
+        drill_push_button(450, 350, 300, 143, drill_parameter_loop)
+        cutter_push_button(50, 350, 300, 143, cutter_parameter_loop)
+        tap_push_button(450, 200, 300, 143, tap_parameter_loop)
         pygame.display.update()
 
 if __name__ == "__main__":
