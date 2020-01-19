@@ -24,7 +24,7 @@ def run_menu():
 
         # drawing
         se.screen.blit(se.bg, (0, 0))
-        pygame.draw.rect(se.screen, se.black, (165, 13, 470, 66),2)
+        pygame.draw.rect(se.screen, se.black, (165, 13, 470, 66), 2)
         pygame.draw.rect(se.screen, se.black, (170, 118, 460, 40))
         pygame.draw.rect(se.screen, se.white, (170, 118, 460, 40), 1)
         pygame.draw.rect(se.screen, se.white, se.frame_menu, 3)

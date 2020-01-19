@@ -6,6 +6,7 @@ clock = pygame.time.Clock()
 pygame.init()
 se = Settings()
 
+
 def parameters_description():
     text_spindle_speed = se.font_tools.render('OBROTY na minutę',
                                               True,
@@ -15,6 +16,7 @@ def parameters_description():
     se.screen.blit(text_spindle_speed, (160, 220))
 
 def table_description():
+    #left titles
     text_vc_table = se.font_table.render('VC = 15', True, se.white)
     text_spindle_table = se.font_table.render('OBROTY', True, se.blue)
     text_hole = se.font_table.render('OTWÓR', True, se.blue)
@@ -23,7 +25,7 @@ def table_description():
 
     se.screen.blit(text_vc_table, (45, 215))
     se.screen.blit(text_hole, (35, 265))
-    se.screen.blit(text_thread, (35,315))
+    se.screen.blit(text_thread, (35, 315))
     se.screen.blit(text_spindle_table, (35, 365))
     se.screen.blit(text_tap_feed, (35, 415))
 
@@ -64,9 +66,45 @@ def table_description():
         text_dim = se.font_table.render(str(spin), True, se.white)
         se.screen.blit(text_dim, (x_pos, 365))
 
+    # hole dimensions
+    text_h_table = se.font_table.render('1,6', True, se.white)
+    se.screen.blit(text_h_table, (175, 265))
+    text_h_table = se.font_table.render('2,5', True, se.white)
+    se.screen.blit(text_h_table, (252, 265))
+    text_h_table = se.font_table.render('3,3', True, se.white)
+    se.screen.blit(text_h_table, (329, 265))
+    text_h_table = se.font_table.render('4,2', True, se.white)
+    se.screen.blit(text_h_table, (406, 265))
+    text_h_table = se.font_table.render('5,0', True, se.white)
+    se.screen.blit(text_h_table, (483, 265))
+    text_h_table = se.font_table.render('6,8', True, se.white)
+    se.screen.blit(text_h_table, (560, 265))
+    text_h_table = se.font_table.render('8,5', True, se.white)
+    se.screen.blit(text_h_table, (637, 265))
+    text_h_table = se.font_table.render('10,2', True, se.white)
+    se.screen.blit(text_h_table, (714, 265))
+
+    # thread dimensions
+    text_th = se.font_table.render('0,25', True, se.white)
+    se.screen.blit(text_th, (175, 315))
+    text_th = se.font_table.render('0,5', True, se.white)
+    se.screen.blit(text_th, (252, 315))
+    text_th = se.font_table.render('0,7', True, se.white)
+    se.screen.blit(text_th, (329, 315))
+    text_th = se.font_table.render('0,8', True, se.white)
+    se.screen.blit(text_th, (406, 315))
+    text_th = se.font_table.render('1.0', True, se.white)
+    se.screen.blit(text_th, (483, 315))
+    text_th = se.font_table.render('1.25', True, se.white)
+    se.screen.blit(text_th, (560, 315))
+    text_th = se.font_table.render('1,5', True, se.white)
+    se.screen.blit(text_th, (637, 315))
+    text_th = se.font_table.render('1,75', True, se.white)
+    se.screen.blit(text_th, (714, 315))
+
 def cross_lines():
     '''Display lines on the cutter/drill screens'''
-    pygame.draw.line(se.screen, se.white,(540,200),(540,450),2 )
+    pygame.draw.line(se.screen, se.white, (540, 200), (540, 450), 2)
     pygame.draw.line(se.screen, se.white, (150, 262), (650, 262), 1)
     pygame.draw.line(se.screen, se.white, (150, 324), (650, 324), 1)
     pygame.draw.line(se.screen, se.white, (150, 386), (650, 386), 1)
@@ -75,17 +113,17 @@ def table():
     '''Display lines on the parameter screen'''
     x = 165
     y = 250
-    pygame.draw.line(se.screen, se.white,(x,200),(x,450), 3)
-    for value in range(0,7):
+    pygame.draw.line(se.screen, se.white, (x, 200), (x, 450), 3)
+    for value in range(0, 7):
         x += 77
         pygame.draw.line(se.screen, se.white, (x, 200), (x, 450), 1)
 
     pygame.draw.line(se.screen, se.white, (25, y), (775, y), 3)
-    for value in range(0,4):
+    for value in range(0, 4):
         y += 50
         pygame.draw.line(se.screen, se.white, (25, y), (775, y), 1)
 
-def cutter_push_button(x,y,w,h,action=None):
+def cutter_push_button(x, y, w, h, action=None):
     '''Making a flashing cutter button '''
 
     # x: The x location of the top left coordinate of the button box.
@@ -96,7 +134,6 @@ def cutter_push_button(x,y,w,h,action=None):
     pygame.font.init()
     mouse = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
-
 
     if x + w > mouse[0] > x and y + h > mouse[1] > y:
         se.screen.blit(se.frez_white_button, (x, y))
@@ -105,7 +142,7 @@ def cutter_push_button(x,y,w,h,action=None):
     else:
         se.screen.blit(se.frez_button, (x, y))
 
-def tap_push_button(x,y,w,h,action=None):
+def tap_push_button(x, y, w, h, action=None):
     '''Making a flashing cutter button '''
 
     # x: The x location of the top left coordinate of the button box.
@@ -117,7 +154,6 @@ def tap_push_button(x,y,w,h,action=None):
     mouse = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
 
-
     if x + w > mouse[0] > x and y + h > mouse[1] > y:
         se.screen.blit(se.tap_white, (x, y))
         if click[0] == 1 and action != None:
@@ -125,7 +161,7 @@ def tap_push_button(x,y,w,h,action=None):
     else:
         se.screen.blit(se.tap_button, (x, y))
 
-def drill_push_button(x,y,w,h,action=None):
+def drill_push_button(x, y, w, h, action=None):
     '''Making a flashing drill button'''
     # x: The x location of the top left coordinate of the button box.
     # y: The y location of the top left coordinate of the button box.
@@ -142,8 +178,7 @@ def drill_push_button(x,y,w,h,action=None):
     else:
         se.screen.blit(se.drill_button, (x, y))
 
-def back_button(x ,y ,w ,h):
-
+def back_button(x, y, w, h):
     '''Making a flashing return button'''
     # x: The x location of the top left coordinate of the button box.
     # y: The y location of the top left coordinate of the button box.
@@ -240,7 +275,6 @@ def cutter_parameter_loop():
         parameters_description()
         txtinput.update(events)
         if diameter:
-
             font_cutter_spin = pygame.font.Font('freesansbold.ttf', 30)
             text_cutter_spin = font_cutter_spin.render(str(cutter_spin(
                 diameter)), True, (250, 250, 250))
@@ -255,9 +289,9 @@ def cutter_parameter_loop():
 
             font_cutter_feed = pygame.font.Font('freesansbold.ttf', 30)
             text_cutter_feed = font_cutter_feed.render(str(cutter_feed(
-                diameter)),True,(250,250,250))
-            se.screen.blit(text_cutter_feed, (550,282))
-        se.screen.blit(txtinput.get_surface(), (50,126))
+                diameter)), True, (250, 250, 250))
+            se.screen.blit(text_cutter_feed, (550, 282))
+        se.screen.blit(txtinput.get_surface(), (50, 126))
         if back_button(700, 0, 100, 100):
             break
         pygame.display.flip()
@@ -287,4 +321,4 @@ def tap_parameter_loop():
             break
         pygame.display.update()
 
-
+tap_parameter_loop()
